@@ -29,6 +29,10 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetButtonDown ("Jump") || Input.GetKeyDown (KeyCode.UpArrow) && grounded) {
 			jump = true;
 		}
+
+		if (Input.GetButtonDown ("Fire3")) {
+			swing = true;
+		}
 	}
 
 	void FixedUpdate () {
@@ -62,6 +66,11 @@ public class PlayerController : MonoBehaviour {
 			anim.SetTrigger ("Jump");
 			rb2d.AddForce(new Vector2(0f, jumpForce));
 			jump = false;
+		}
+
+		if (swing) {
+			anim.SetTrigger ("Swing");
+			swing = false;
 		}
 
 	}
